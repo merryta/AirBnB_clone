@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+"""BaseModel module"""
+
+class BaseModel:
+    """class BaseModel: defines common attributes/methods for other   classes"""
+    
