@@ -21,8 +21,7 @@ class BaseModel:
                     self.__dict__[k] = datetime.strptime(v, fmt)
                 else:
                     self.__dict__[k] = v
-        else:
-            models.storage.new(self)
+        models.storage.new(self)
 
     def save(self):
         """update updated_at attribute with current datetime"""

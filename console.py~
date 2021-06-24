@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+"""
+console module
+"""
+import cmd
+from models.base_model import BaseModel
+
+class HBNBCommand(cmd.Cmd):
+    """class HBNBCommand"""
+    prompt = "(hbnb)"
+
+    __classes = {
+        "BaseModel"
+        }
+    def emptyline(self):
+        """does nothing when an empty line is invoked"""
+        pass
+
+    def do_quit(self, arg):
+        """quit command to exit the program"""
+        return True
+
+    def do_EOF(self, arg):
+        """EOF invocation to quit the program."""
+        print("")
+        return True
+
+    def do_create(self, arg):
+        """Usage: create <class>
+        creates a new instance of BaseModel, saves it into JSON
+        File and prints the id
+        """
+        if len(arg) ==  0:
+            print("** class name missing **")
+        elif arg[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            print(eval(arg[0]).id)
+            storage.save()
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
