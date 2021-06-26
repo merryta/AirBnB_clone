@@ -14,7 +14,11 @@ class HBNBCommand(cmd.Cmd):
     __classes = {
         "BaseModel",
         "User",
-        "State"
+        "State",
+        "City",
+        "Amenity",
+        "Place",
+        "Review"
         }
     def emptyline(self):
         """does nothing when an empty line is invoked"""
