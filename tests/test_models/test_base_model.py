@@ -4,7 +4,7 @@ import models
 import os
 import unittest
 from time import sleep
-from datatime import datetime
+from datetime import datetime
 from models.base_model import BaseModel
 
 class TestBaseModel_instantiation(unittest.TestCase):
@@ -14,7 +14,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
         self.assertEqual(BaseModel, type(BaseModel()))
 
     def test_new_instance_in_objects(self):
-        self.assertIn(BaseModel(), models.storage.all())
+        self.assertIn(BaseModel(), models.storage.all().values())
 
     def test_id_str_public(self):
         self.assertEqual(str, type(BaseModel().id))
@@ -138,6 +138,3 @@ class TestBaseModel_to_dict(unittest.TestCase):
             'updated_at': dt.isoformat()
         }
         self.assertDictEqual(bm.to_dict(), tdict)
-
-if __name__ == "__main__":
-    unittest.main()
