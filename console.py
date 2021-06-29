@@ -14,6 +14,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """class HBNBCommand"""
     prompt = "(hbnb)"
@@ -58,21 +59,22 @@ class HBNBCommand(cmd.Cmd):
                         print(new)
                         print(new[0])
                         print(new[1])
-                        return self.do_update(args[0] + '~'
-                                             + new[0] + '~' +  new[1])
+                        return self.do_update(args[0] + '~' +
+                                              new[0] + '~' + new[1])
                     else:
                         new = new.split(",")
                         _id = new[0]
                         name = new[1]
                         value = new[2]
                         return self.do_update(args[0] + ' ' + _id +
-                                          ' ' + name + ' ' + value)
+                                              ' ' + name + ' ' + value)
                 else:
                     print("*** Unknown syntax: {}".format(line))
             else:
                 print("*** Unknown syntax: {}".format(line))
         else:
             print("*** Unknown syntax: {}".format(line))
+
     def emptyline(self):
         """does nothing when an empty line is invoked"""
         pass
@@ -92,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
         File and prints the id
         """
         args = parse(arg)
-        if len(args) ==  0:
+        if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
@@ -182,7 +184,7 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
             return False
         if len(args) == 3:
-            #evaluating a dictionary presence, otherwise value missing
+            # evaluating a dictionary presence, otherwise value missing
             try:
                 type(eval(args[2])) != dict
             except NameError:
@@ -199,12 +201,14 @@ class HBNBCommand(cmd.Cmd):
             obj = obj_dict["{}.{}".format(args[0], args[1])]
             for key, value in eval(args[2]).items():
                 if (key in obj.__class__.__dict__.keys() and
-                type(obj.__class__.__dict__[key]) in {str, int, float}):
+                        type(obj.__class__.__dict__[key]) in
+                        {str, int, float}):
                     cast = type(obj.__class__.__dict__[key])
                     obj.__dict__[key] = cast(value)
                 else:
                     obj.__dict__[key] = value
         storage.save
+
     def do_count(self, arg):
         """Usage: count <class> or <class>.count()
         retrieves the count of instances of a given class
@@ -215,6 +219,8 @@ class HBNBCommand(cmd.Cmd):
             if args[0] == obj.__class__.__name__:
                 count += 1
         print(count)
+
+
 def parse(arg):
     """converts a string to a list of arguements"""
     args = split(arg)

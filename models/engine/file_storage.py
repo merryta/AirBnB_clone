@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
     """serializes instances to a JSON file and deserializes
     JSON file to instances"""
@@ -34,7 +35,6 @@ class FileStorage:
 
         with open(FileStorage.__file_path, "w") as f:
             json.dump(obj_dict, f)
-
 
     def reload(self):
         """deserializes the JSON file to __objects"""

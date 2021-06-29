@@ -7,6 +7,7 @@ from time import sleep
 from datetime import datetime
 from models.base_model import BaseModel
 
+
 class TestBaseModel_instantiation(unittest.TestCase):
     """Testing instantiation attributes"""
 
@@ -39,8 +40,8 @@ class TestBaseModel_instantiation(unittest.TestCase):
         bm_str = bm.__str__()
         self.assertIn("[BaseModel] (123456)", bm_str)
         self.assertIn("'id': '123456'", bm_str)
-        self.assertIn("'created_at': "+ dt_repr, bm_str)
-        self.assertIn("'updated_at': "+ dt_repr, bm_str)
+        self.assertIn("'created_at': " + dt_repr, bm_str)
+        self.assertIn("'updated_at': " + dt_repr, bm_str)
 
     def test_instantiation_with_kwargs(self):
         dt = datetime.today()
@@ -57,6 +58,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
         self.assertEqual(bm.id, "345")
         self.assertEqual(bm.created_at, dt)
         self.assertEqual(bm.updated_at, dt)
+
 
 class TestBaseModel_save(unittest.TestCase):
     """Testing BaseModel's save method"""
@@ -103,6 +105,7 @@ class TestBaseModel_save(unittest.TestCase):
         with open("file.json", "r") as f:
             self.assertIn(bmid, f.read())
 
+
 class TestBaseModel_to_dict(unittest.TestCase):
     """testing the to_dict method of BaseModel"""
 
@@ -138,3 +141,6 @@ class TestBaseModel_to_dict(unittest.TestCase):
             'updated_at': dt.isoformat()
         }
         self.assertDictEqual(bm.to_dict(), tdict)
+
+if __name__ == "__main__":
+    unittest.main()
